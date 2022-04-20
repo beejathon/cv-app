@@ -1,7 +1,7 @@
 import React from "react";
 
 const Overview = (props) => {
-    const { general, education } = props;
+    const { general, education, experience } = props;
 
     return (
       <div>
@@ -18,7 +18,15 @@ const Overview = (props) => {
             <p>Date: {entry.date}</p>
           </div>
         ))}
-        <h3>Work Experience</h3>
+        <h3>Experience</h3>
+        {experience.map((entry) => (
+          <div key={entry.id} className="experienceRow">
+            <p>{entry.organization}</p>
+            <p>{entry.dateStart} - {entry.dateEnd}</p>
+            <p>Job title / position: {entry.title}</p>
+            <p>Summary: {entry.summary}</p>
+          </div>
+        ))}
       </div>
     );
 }
