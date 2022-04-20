@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import General from "./components/General";
+import Education from "./components/Education";
 import Overview from "./components/Overview";
+import './styles/App.css'
 
 class App extends Component {
   constructor(props) {
@@ -13,23 +15,37 @@ class App extends Component {
     };
 
     this.saveForm = this.saveForm.bind(this);
+    this.addEducationEntry = this.addEducationEntry.bind(this);
   };
 
   saveForm(e, data) {
-    const values = Object.values(data)
-
     this.setState({
-      [e.target.id]: values,
+      [e.target.id]: data,
     })
   }
+
+  addEducationEntry(data) {
+    this.setState(state => {
+      const education = [...state.education, data];
+
+      return {
+        education,
+      };
+    });
+  };
 
   render() {
     const { general, education, work } = this.state;
 
     return (
       <div className="App">
-        <General saveForm={this.saveForm} />
-        <Overview general={general} education={education} work={work} />
+        <div className="forms">
+          <General saveForm={this.saveForm} />
+          <Education addEducationEntry={this.addEducationEntry} />
+        </div>
+        <div className="overview">
+          <Overview general={general} education={education} work={work} />
+        </div>
       </div>
     );
   };

@@ -17,6 +17,7 @@ class General extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.fileInput = React.createRef();
   }
 
   handleChange(e) {
@@ -27,7 +28,15 @@ class General extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.saveForm(e, this.state)
+    this.props.saveForm(e, this.state);
+    this.setState({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      summary: '',
+      photo: { },
+    })
   }
 
   render() {
