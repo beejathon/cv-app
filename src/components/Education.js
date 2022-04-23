@@ -26,7 +26,7 @@ class Education extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.addEducationEntry(this.state);
+    this.props.addEducation(this.state);
     this.setState({
       institution: '',
       qualification: '',

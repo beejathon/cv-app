@@ -28,7 +28,7 @@ class Experience extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.addExperienceEntry(this.state);
+    this.props.addExperience(this.state);
     this.setState({
       organization: '',
       title: '',

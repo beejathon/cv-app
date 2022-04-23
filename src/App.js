@@ -16,8 +16,10 @@ class App extends Component {
     };
 
     this.saveForm = this.saveForm.bind(this);
-    this.addEducationEntry = this.addEducationEntry.bind(this);
-    this.addExperienceEntry = this.addExperienceEntry.bind(this);
+    this.addEducation = this.addEducation.bind(this);
+    this.addExperience = this.addExperience.bind(this);
+    this.delEducation = this.delEducation.bind(this);
+    this.delExperience = this.delExperience.bind(this);
   };
 
   saveForm(e, data) {
@@ -26,7 +28,7 @@ class App extends Component {
     })
   }
 
-  addEducationEntry(data) {
+  addEducation(data) {
     this.setState(state => {
       const education = [...state.education, data];
 
@@ -36,7 +38,17 @@ class App extends Component {
     });
   };
 
-  addExperienceEntry(data) {
+  delEducation(id) {
+    this.setState(state => {
+      const education = state.education.filter((item) => id !== item.id);
+
+      return {
+        education,
+      };
+    });
+  };
+
+  addExperience(data) {
     this.setState(state => {
       const experience = [...state.experience, data];
 
@@ -46,18 +58,45 @@ class App extends Component {
     });
   };
 
+  delExperience(id) {
+    this.setState(state => {
+      const experience = state.experience.filter((item) => id !== item.id);
+
+      return {
+        experience,
+      };
+    });
+  };
+
   render() {
-    const { general, education, experience } = this.state;
+    const { 
+      general, 
+      education, 
+      experience,
+    } = this.state;
 
     return (
       <div className="App">
         <div className="forms">
-          <General saveForm={this.saveForm} />
-          <Education addEducationEntry={this.addEducationEntry} />
-          <Experience addExperienceEntry={this.addExperienceEntry} />
+          <General 
+            editGeneral={this.editGeneral}
+            saveForm={this.saveForm} 
+          />
+          <Education 
+            addEducation={this.addEducation} 
+          />
+          <Experience 
+            addExperience={this.addExperience} 
+          />
         </div>
         <div className="overview">
-          <Overview general={general} education={education} experience={experience} />
+          <Overview 
+            general={general} 
+            education={education} 
+            experience={experience} 
+            delEducation={this.delEducation}
+            delExperience={this.delExperience}
+          />
         </div>
       </div>
     );
