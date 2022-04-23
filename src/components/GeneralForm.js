@@ -2,17 +2,18 @@ import React from "react";
 import { Component } from "react";
 import '../styles/General.css'
 
-class General extends Component {
+class GeneralForm extends Component {
   constructor(props) {
     super(props);
 
+    const { general } = props;
+
     this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      summary: '',
-      photo: { },
+      firstName: general.firstName,
+      lastName: general.lastName,
+      email: general.email,
+      phone: general.phone,
+      summary: general.summary,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -28,20 +29,11 @@ class General extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.saveForm(e, this.state);
-    this.setState({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      summary: '',
-      photo: { },
-    });
   };
 
   render() {
     return (
       <div className="General"> 
-        <h2>General Info</h2>
         <form id="general" className="generalForm" onSubmit={this.handleSubmit}>
           <label htmlFor="firstName">First Name: </label>
           <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} required />
@@ -60,5 +52,5 @@ class General extends Component {
   };
 }
 
-export default General;
+export default GeneralForm;
 

@@ -1,7 +1,6 @@
 .Education, .educationForm {
   display: flex;
   flex-direction: column;
-  width: 40vw;
-  margin: auto;
+  width: 60vw;
   flex: 1;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Overview = (props) => {
+const Preview = (props) => {
     const { 
       general, 
       education, 
@@ -39,4 +39,4 @@ const Overview = (props) => {
     );
 }
 
-export default Overview;
+export default Preview;

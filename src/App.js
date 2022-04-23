@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import General from "./components/General";
-import Education from "./components/Education";
-import Experience from "./components/Experience";
-import Overview from "./components/Overview";
+import GeneralView from "./components/GeneralView";
+import GeneralForm from "./components/GeneralForm";
+import EducationForm from "./components/EducationForm";
+import ExperienceForm from "./components/ExperienceForm";
+import Preview from "./components/Preview";
 import './styles/App.css'
 
 class App extends Component {
@@ -10,12 +11,22 @@ class App extends Component {
     super(props);
 
     this.state = {
-      general: [],
+      general: [{
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        summary: '',
+      }],
       education: [],
       experience: [],
+      editGeneral: false,
+      editEducation: false,
+      editExperience: false,
     };
 
     this.saveForm = this.saveForm.bind(this);
+    this.editGeneral = this.editGeneral.bind(this);
     this.addEducation = this.addEducation.bind(this);
     this.addExperience = this.addExperience.bind(this);
     this.delEducation = this.delEducation.bind(this);
@@ -25,6 +36,13 @@ class App extends Component {
   saveForm(e, data) {
     this.setState({
       [e.target.id]: data,
+      editGeneral: false,
+    })
+  }
+
+  editGeneral() {
+    this.setState({
+      editGeneral: true,
     })
   }
 
@@ -73,24 +91,30 @@ class App extends Component {
       general, 
       education, 
       experience,
+      editGeneral
     } = this.state;
+
+    let generalSection;
+    if (editGeneral) {
+      generalSection = <GeneralForm general={general} saveForm={this.saveForm} />
+    } else {
+      generalSection = <GeneralView general={general} editGeneral={this.editGeneral} />
+    }
 
     return (
       <div className="App">
-        <div className="forms">
-          <General 
-            editGeneral={this.editGeneral}
-            saveForm={this.saveForm} 
-          />
-          <Education 
+        <div className="main">
+          <h3>General Info:</h3>
+          {generalSection}
+          <EducationForm 
             addEducation={this.addEducation} 
           />
-          <Experience 
+          <ExperienceForm 
             addExperience={this.addExperience} 
           />
         </div>
-        <div className="overview">
-          <Overview 
+        <div className="aside">
+        <Preview 
             general={general} 
             education={education} 
             experience={experience} 

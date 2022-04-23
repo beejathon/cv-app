@@ -3,7 +3,7 @@ import { Component } from "react";
 import uniqid from 'uniqid'
 import '../styles/Education.css';
 
-class Education extends Component {
+class EducationForm extends Component {
   constructor(props) {
     super(props);
 
@@ -38,7 +38,6 @@ class Education extends Component {
   render() {
     return (
       <div className="Education">
-        <h2>Education</h2>
         <form className="educationForm" onSubmit={this.handleSubmit}>
           <label htmlFor="institution">Institution Name: </label>
           <input type="text" name="institution" value={this.state.institution} onChange={this.handleChange} required />
@@ -53,4 +52,4 @@ class Education extends Component {
   };
 }
 
-export default Education;
+export default EducationForm;

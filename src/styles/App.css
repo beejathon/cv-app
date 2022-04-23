@@ -7,13 +7,19 @@
   margin: 20px;
 }
 
-.forms {
+.main {
   display: flex;
   flex-direction: column;
-  width: 40vw;
+  width: 60vw;
+  flex: 1;
+  padding: 20px;
 }
 
-.overview {
-  width: 40vw;
+.aside {
+  width: 20vw;
   margin: auto;
+}
+
+button {
+  width: 60px;
 }

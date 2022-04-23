@@ -3,7 +3,7 @@ import { Component } from "react";
 import uniqid from 'uniqid';
 import '../styles/Experience.css';
 
-class Experience extends Component {
+class ExperienceForm extends Component {
   constructor(props) {
     super(props);
 
@@ -42,7 +42,6 @@ class Experience extends Component {
   render() {
     return (
       <div className="Experience">
-        <h2>Experience</h2>
           <form className="experienceForm" onSubmit={this.handleSubmit}>
           <label htmlFor="organization">Organization Name: </label>
           <input type="text" name="organization" value={this.state.organization} onChange={this.handleChange} required />
@@ -61,4 +60,4 @@ class Experience extends Component {
   };
 }
 
-export default Experience;
+export default ExperienceForm;
