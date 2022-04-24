@@ -14,6 +14,7 @@ class ExperienceForm extends Component {
       dateStart: '',
       dateEnd: '',
       id: uniqid(),
+      edit: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -36,13 +37,14 @@ class ExperienceForm extends Component {
       dateStart: '',
       dateEnd: '',
       id: uniqid(),
+      edit: false,
     });
   };
 
   render() {
     return (
       <div className="Experience">
-          <form className="experienceForm" onSubmit={this.handleSubmit}>
+        <form className="experienceForm" onSubmit={this.handleSubmit}>
           <label htmlFor="organization">Organization Name: </label>
           <input type="text" name="organization" value={this.state.organization} onChange={this.handleChange} required />
           <label htmlFor="title">Job title / Position: </label>

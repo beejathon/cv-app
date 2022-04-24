@@ -6,7 +6,12 @@ class EducationEditForm extends Component {
   constructor(props) {
     super(props);
 
-    const { institution, qualification, date, id } = props.entry;
+    const { 
+      institution, 
+      qualification, 
+      date, 
+      id 
+    } = props.entry;
 
     this.state = {
       institution: institution,
