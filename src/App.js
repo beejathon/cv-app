@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import GeneralView from "./components/GeneralView";
 import GeneralForm from "./components/GeneralForm";
+import EducationView from "./components/EducationView";
 import EducationForm from "./components/EducationForm";
 import ExperienceForm from "./components/ExperienceForm";
 import Preview from "./components/Preview";
@@ -20,29 +21,29 @@ class App extends Component {
       }],
       education: [],
       experience: [],
-      editGeneral: false,
-      editEducation: false,
-      editExperience: false,
+      editGeneralOn: false,
     };
 
     this.saveForm = this.saveForm.bind(this);
     this.editGeneral = this.editGeneral.bind(this);
     this.addEducation = this.addEducation.bind(this);
-    this.addExperience = this.addExperience.bind(this);
     this.delEducation = this.delEducation.bind(this);
+    this.editEducation = this.editEducation.bind(this);
+    this.updateEducation = this.updateEducation.bind(this);
+    this.addExperience = this.addExperience.bind(this);
     this.delExperience = this.delExperience.bind(this);
   };
 
   saveForm(e, data) {
     this.setState({
       [e.target.id]: data,
-      editGeneral: false,
+      editGeneralOn: false,
     })
   }
 
   editGeneral() {
     this.setState({
-      editGeneral: true,
+      editGeneralOn: true,
     })
   }
 
@@ -58,7 +59,44 @@ class App extends Component {
 
   delEducation(id) {
     this.setState(state => {
-      const education = state.education.filter((item) => id !== item.id);
+      const education = state.education.filter((entry) => id !== entry.id);
+
+      return {
+        education,
+      };
+    });
+  };
+
+  editEducation(id) {
+    this.setState(state => {
+      const education = state.education
+      .map((entry) => {
+        if (entry.id === id) {
+          entry.edit = true;
+        }
+        return entry;
+      })
+
+      return {
+        education,
+      };
+    });
+  };
+
+  updateEducation(data) {
+    const { institution, qualification, date, id } = data;
+
+    this.setState(state => {
+      const education = state.education.map((entry) => {
+        if (entry.id === id) {
+          entry.institution = institution;
+          entry.qualification = qualification;
+          entry.date = date;
+          entry.edit = false;
+        };
+
+        return entry;
+      });
 
       return {
         education,
@@ -91,11 +129,11 @@ class App extends Component {
       general, 
       education, 
       experience,
-      editGeneral
+      editGeneralOn,
     } = this.state;
 
     let generalSection;
-    if (editGeneral) {
+    if (editGeneralOn) {
       generalSection = <GeneralForm general={general} saveForm={this.saveForm} />
     } else {
       generalSection = <GeneralView general={general} editGeneral={this.editGeneral} />
@@ -106,9 +144,17 @@ class App extends Component {
         <div className="main">
           <h3>General Info:</h3>
           {generalSection}
+          <h3>Education:</h3>
+          <EducationView
+            education={education}
+            delEducation={this.delEducation}
+            editEducation={this.editEducation} 
+            updateEducation={this.updateEducation}
+          />
           <EducationForm 
             addEducation={this.addEducation} 
           />
+          <h3>Experience:</h3>
           <ExperienceForm 
             addExperience={this.addExperience} 
           />

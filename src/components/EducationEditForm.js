@@ -1,20 +1,20 @@
 import React from "react";
 import { Component } from "react";
-import uniqid from 'uniqid'
 import '../styles/Education.css';
 
-class EducationForm extends Component {
+class EducationEditForm extends Component {
   constructor(props) {
     super(props);
 
+    const { institution, qualification, date, id } = props.entry;
+
     this.state = {
-      institution: '',
-      qualification: '',
-      date: '',
-      id: uniqid(),
-      edit: false,
+      institution: institution,
+      qualification: qualification,
+      date: date,
+      id: id,
     };
-    
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   };
@@ -27,14 +27,7 @@ class EducationForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.addEducation(this.state);
-    this.setState({
-      institution: '',
-      qualification: '',
-      date: '',
-      id: uniqid(),
-      edit: false,
-    });
+    this.props.updateEducation(this.state);
   };
 
   render() {
@@ -47,11 +40,11 @@ class EducationForm extends Component {
           <input type="text" name="qualification" value={this.state.qualification} onChange={this.handleChange} required />
           <label htmlFor="date">Date of completion: </label>
           <input type="date" name="date" value={this.state.date} onChange={this.handleChange} required />
-          <button id="education" type="submit">Add</button>          
+          <button id="education" type="submit">Save</button>          
         </form>
       </div>
     );
   };
 }
 
-export default EducationForm;
+export default EducationEditForm;

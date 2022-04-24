@@ -5,8 +5,6 @@ const Preview = (props) => {
       general, 
       education, 
       experience,
-      delEducation,
-      delExperience
     } = props;
 
     return (
@@ -22,7 +20,6 @@ const Preview = (props) => {
             <p>Institution name: {entry.institution}</p>
             <p>Qualification: {entry.qualification}</p>
             <p>Date: {entry.date}</p>
-            <button onClick={() => delEducation(entry.id)}>Delete</button>
           </div>
         ))}
         <h3>Experience</h3>
@@ -32,7 +29,6 @@ const Preview = (props) => {
             <p>{entry.dateStart} - {entry.dateEnd}</p>
             <p>Job title / position: {entry.title}</p>
             <p>Summary: {entry.summary}</p>
-            <button onClick={() => delExperience(entry.id)}>Delete</button>
           </div>
         ))}
       </div>
