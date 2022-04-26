@@ -1,24 +1,48 @@
-.App {
+:root {
+  background-color: rgb(192, 224, 229);
+  background-size: cover;
   font-family: 'Courier New', Courier, monospace;
   box-sizing: border-box;
+}
+
+.App {
   display: flex;
-  flex-direction: row;
-  padding: 20px;
-  margin: 20px;
+  flex-direction: column;
+  margin: auto;
+}
+
+.Header {
+  width: 100vw;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 14px;
+  margin-bottom: 14px;
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  width: 60vw;
+  width: 50vw;
   flex: 1;
+  margin: auto;
+}
+
+.Preview {
+  margin-top: 20px;
 }
 
 .aside {
-  width: 20vw;
+  width: 40vw;
   margin: auto;
 }
 
 button {
   width: 60px;
+}
+
+input, textarea {
+  padding: 4px;
+  margin: 12px 0;
+  max-width: 60vw;
 }

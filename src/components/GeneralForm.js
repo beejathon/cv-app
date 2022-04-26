@@ -6,14 +6,20 @@ class GeneralForm extends Component {
   constructor(props) {
     super(props);
 
-    const { general } = props;
+    const { 
+      firstName,
+      lastName,
+      email,
+      phone,
+      summary,
+     } = props;
 
     this.state = {
-      firstName: general.firstName,
-      lastName: general.lastName,
-      email: general.email,
-      phone: general.phone,
-      summary: general.summary,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phone: phone,
+      summary: summary,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -28,12 +34,13 @@ class GeneralForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.saveForm(e, this.state);
+    this.props.saveGeneral(this.state);
   };
 
   render() {
     return (
-      <div className="General"> 
+      <div className="General">
+        <h3>General Info:</h3>
         <form id="general" className="generalForm" onSubmit={this.handleSubmit}>
           <label htmlFor="firstName">First Name: </label>
           <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} required />

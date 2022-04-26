@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Header from "./components/Header";
 import GeneralView from "./components/GeneralView";
 import GeneralForm from "./components/GeneralForm";
 import EducationView from "./components/EducationView";
@@ -6,40 +7,39 @@ import EducationForm from "./components/EducationForm";
 import ExperienceView from "./components/ExperienceView";
 import ExperienceForm from "./components/ExperienceForm";
 import Preview from "./components/Preview";
-import './styles/App.css'
+import './styles/App.css';
+
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      general: [{
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        summary: '',
-      }],
+      general: [],
       education: [],
       experience: [],
       editGeneralOn: false,
+      addEducationOn: false,
+      addExperienceOn: false,
     };
 
-    this.saveForm = this.saveForm.bind(this);
+    this.saveGeneral = this.saveGeneral.bind(this);
     this.editGeneral = this.editGeneral.bind(this);
+    this.activateAddEdu = this.activateAddEdu.bind(this);
     this.addEducation = this.addEducation.bind(this);
     this.delEducation = this.delEducation.bind(this);
     this.editEducation = this.editEducation.bind(this);
     this.updateEducation = this.updateEducation.bind(this);
+    this.activateAddExp = this.activateAddExp.bind(this);
     this.addExperience = this.addExperience.bind(this);
     this.delExperience = this.delExperience.bind(this);
     this.editExperience = this.editExperience.bind(this);
     this.updateExperience = this.updateExperience.bind(this);
   };
 
-  saveForm(e, data) {
+  saveGeneral(data) {
     this.setState({
-      [e.target.id]: data,
+      general: data,
       editGeneralOn: false,
     })
   }
@@ -50,12 +50,17 @@ class App extends Component {
     })
   }
 
+  activateAddEdu() {
+    this.setState({ addEducationOn: true })
+  }
+
   addEducation(data) {
     this.setState(state => {
       const education = [...state.education, data];
 
       return {
         education,
+        addEducationOn: false,
       };
     });
   };
@@ -112,12 +117,17 @@ class App extends Component {
     });
   };
 
+  activateAddExp() {
+    this.setState({ addExperienceOn: true })
+  }
+
   addExperience(data) {
     this.setState(state => {
       const experience = [...state.experience, data];
 
       return {
         experience,
+        addExperienceOn: false,
       };
     });
   };
@@ -184,47 +194,60 @@ class App extends Component {
       education, 
       experience,
       editGeneralOn,
+      addEducationOn,
+      addExperienceOn,
     } = this.state;
 
     let generalSection;
     if (editGeneralOn) {
-      generalSection = <GeneralForm general={general} saveForm={this.saveForm} />
+      generalSection = <GeneralForm
+        general={general} 
+        saveGeneral={this.saveGeneral} 
+      />
     } else {
       generalSection = <GeneralView general={general} editGeneral={this.editGeneral} />
     }
 
+    let addEducation;
+    if (addEducationOn) {
+      addEducation = <EducationForm addEducation={this.addEducation} />
+    } else {
+      addEducation = <button onClick={this.activateAddEdu}>+</button>
+    }
+
+    let addExperience;
+    if (addExperienceOn) {
+      addExperience = <ExperienceForm addExperience={this.addExperience} />
+    } else {
+      addExperience = <button onClick={this.activateAddExp}>+</button>
+    }
+
     return (
       <div className="App">
+        <Header />
         <div className="main">
-          <h3>General Info:</h3>
           {generalSection}
-          <h3>Education:</h3>
           <EducationView
             education={education}
             delEducation={this.delEducation}
             editEducation={this.editEducation} 
             updateEducation={this.updateEducation}
           />
-          <EducationForm 
-            addEducation={this.addEducation} 
-          />
-          <h3>Experience:</h3>
+          {addEducation}
           <ExperienceView 
             experience={experience}
             delExperience={this.delExperience}
             editExperience={this.editExperience}
             updateExperience={this.updateExperience}
           />
-          <ExperienceForm 
-            addExperience={this.addExperience} 
-          />
-        </div>
-        <div className="aside">
-        <Preview 
+          {addExperience}
+          <Preview 
             general={general} 
             education={education} 
             experience={experience} 
           />
+        </div>
+        <div className="aside">
         </div>
       </div>
     );

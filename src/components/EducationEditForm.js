@@ -37,17 +37,15 @@ class EducationEditForm extends Component {
 
   render() {
     return (
-      <div className="Education">
-        <form className="educationForm" onSubmit={this.handleSubmit}>
-          <label htmlFor="institution">Institution Name: </label>
-          <input type="text" name="institution" value={this.state.institution} onChange={this.handleChange} required />
-          <label htmlFor="qualification">Qualification: </label>
-          <input type="text" name="qualification" value={this.state.qualification} onChange={this.handleChange} required />
-          <label htmlFor="date">Date of completion: </label>
-          <input type="date" name="date" value={this.state.date} onChange={this.handleChange} required />
-          <button id="education" type="submit">Save</button>          
-        </form>
-      </div>
+      <form className="educationForm" onSubmit={this.handleSubmit}>
+        <label htmlFor="institution">Institution Name: </label>
+        <input type="text" name="institution" value={this.state.institution} onChange={this.handleChange} required />
+        <label htmlFor="qualification">Qualification: </label>
+        <input type="text" name="qualification" value={this.state.qualification} onChange={this.handleChange} required />
+        <label htmlFor="date">Date of completion: </label>
+        <input type="date" name="date" value={this.state.date} onChange={this.handleChange} required />
+        <button id="education" type="submit">Save</button>          
+      </form>
     );
   };
 }

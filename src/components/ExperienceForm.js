@@ -50,7 +50,7 @@ class ExperienceForm extends Component {
           <label htmlFor="title">Job title / Position: </label>
           <input type="text" name="title" value={this.state.title} onChange={this.handleChange} required />
           <label htmlFor="summary">Summary: </label>
-          <input type="textarea" name="summary" value={this.state.summary} onChange={this.handleChange} required />
+          <textarea name="summary" value={this.state.summary} onChange={this.handleChange} required />
           <label htmlFor="dateStart">From: </label>
           <input type="date" name="dateStart" value={this.state.dateStart} onChange={this.handleChange} required />
           <label htmlFor="dateEnd">To: </label>

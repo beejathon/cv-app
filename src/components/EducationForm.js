@@ -1,6 +1,6 @@
 import React from "react";
 import { Component } from "react";
-import uniqid from 'uniqid'
+import uniqid from 'uniqid';
 import '../styles/Education.css';
 
 class EducationForm extends Component {
@@ -39,17 +39,15 @@ class EducationForm extends Component {
 
   render() {
     return (
-      <div className="Education">
-        <form className="educationForm" onSubmit={this.handleSubmit}>
-          <label htmlFor="institution">Institution Name: </label>
-          <input type="text" name="institution" value={this.state.institution} onChange={this.handleChange} required />
-          <label htmlFor="qualification">Qualification: </label>
-          <input type="text" name="qualification" value={this.state.qualification} onChange={this.handleChange} required />
-          <label htmlFor="date">Date of completion: </label>
-          <input type="date" name="date" value={this.state.date} onChange={this.handleChange} required />
-          <button id="education" type="submit">Add</button>          
-        </form>
-      </div>
+      <form className="educationForm" onSubmit={this.handleSubmit}>
+        <label htmlFor="institution">Institution Name: </label>
+        <input type="text" name="institution" value={this.state.institution} onChange={this.handleChange} required />
+        <label htmlFor="qualification">Qualification: </label>
+        <input type="text" name="qualification" value={this.state.qualification} onChange={this.handleChange} required />
+        <label htmlFor="date">Date of completion: </label>
+        <input type="date" name="date" value={this.state.date} onChange={this.handleChange} required />
+        <button id="education" type="submit">Add</button>          
+      </form>
     );
   };
 }

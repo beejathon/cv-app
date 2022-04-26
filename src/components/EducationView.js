@@ -18,6 +18,7 @@ class EducationView extends Component {
   
     return (
       <div className="Education">
+        <h3>Education:</h3>
         {education.map((entry) => {
           if (entry.edit === false) {
             return (

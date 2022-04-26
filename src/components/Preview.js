@@ -1,4 +1,5 @@
 import React from "react";
+import '../styles/App.css';
 
 const Preview = (props) => {
     const { 
@@ -8,7 +9,7 @@ const Preview = (props) => {
     } = props;
 
     return (
-      <div>
+      <div className="Preview">
         <h3>General Info</h3>
         <p>Name: {general.firstName} {general.lastName}</p>
         <p>Email: {general.email}</p>

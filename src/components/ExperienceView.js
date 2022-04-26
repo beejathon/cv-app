@@ -18,6 +18,7 @@ class ExperienceView extends Component {
 
     return (
       <div className="Experience">
+        <h3>Experience:</h3>
         {experience.map((entry) => {
           if (entry.edit === false) {
             return (

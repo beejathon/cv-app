@@ -1,6 +1,11 @@
 .Experience, .experienceForm {
   display: flex;
   flex-direction: column;
-  width: 60vw;
+  width: 50vw;
   flex: 1;
+  margin-bottom: 14px;
+}
+
+.experienceRow {
+  margin-bottom: 14px;
 }
