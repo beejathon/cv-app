@@ -1,48 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
 :root {
   background-color: rgb(192, 224, 229);
-  background-size: cover;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
+}
+
+html, body {
+  margin:0;
+  padding:0;
+  overflow-wrap: break-word;
 }
 
 .App {
   display: flex;
   flex-direction: column;
-  margin: auto;
+  width: 100vw;
 }
 
-.Header {
+.header {
   width: 100vw;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
   padding: 14px;
   margin-bottom: 14px;
+  position: sticky;
+  width: 100vw;
 }
 
 .main {
   display: flex;
-  flex-direction: column;
-  width: 50vw;
-  flex: 1;
-  margin: auto;
+  flex-direction: row;
+  width: 100vw;
 }
 
-.Preview {
-  margin-top: 20px;
+.forms {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  align-items: center;
+  flex: 1;
 }
 
 .aside {
-  width: 40vw;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  align-items: center;
+  flex: 1;
 }
 
 button {
-  width: 60px;
+	background-color:#599bb3;
+	border-radius: 14px;
+	display: inline-block;
+	cursor: pointer;
+	color:#ffffff;
+  font-family: 'Arial', sans-serif;
+	font-size: 15px;
+	padding: 6px;
+  width: 5em;
+	text-decoration:none;
+}
+
+button:hover {
+	background-color:#408c99;
+}
+button:active {
+	position: relative;
+	top: 1px;
 }
 
 input, textarea {
   padding: 4px;
-  margin: 12px 0;
-  max-width: 60vw;
+  margin: 12px 0px;
+  width: 30vw;
+}
+
+textarea {
+  max-width: 30vw;
+  min-width: 30vw;
+  height: 80px;
+  max-height: fit-content;
+}
+
+.button-row {
+  display:flex;
+  flex-direction: row;
+  column-gap: 1em;
+}
+
+.button-row button {
+  width: 5em;
+}
+
+.addBtn {
+  font-size: larger;
+  padding: 0px;
+  font-family: 'Arial', sans-serif;
+  color: #ffffff;
+  border-radius: 50%;
+  height: 2.5em;
+  width: 3em;
 }

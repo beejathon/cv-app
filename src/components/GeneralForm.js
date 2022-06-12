@@ -22,9 +22,9 @@ const GeneralForm = ({general, saveGeneral}) => {
   };
 
   return (
-    <div className="General">
+    <div className="general">
       <h3>General Info:</h3>
-      <form id="general" className="generalForm" onSubmit={handleSubmit}>
+      <form id="general" className="general-form" onSubmit={handleSubmit}>
         <label htmlFor="firstName">First Name: </label>
         <input type="text" name="firstName" value={firstName} onChange={e => setFirstName(e.target.value)} required />
         <label htmlFor="lastName">Last Name: </label>

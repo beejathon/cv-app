@@ -1,5 +1,5 @@
 import React from "react";
-import '../styles/App.css';
+import '../styles/Preview.css';
 
 const Preview = (props) => {
   const { 
@@ -9,7 +9,7 @@ const Preview = (props) => {
   } = props;
 
   return (
-    <div className="Preview">
+    <div className="preview">
       <h3>General Info</h3>
       <p>Name: {general.firstName} {general.lastName}</p>
       <p>Email: {general.email}</p>
@@ -17,7 +17,7 @@ const Preview = (props) => {
       <p>Summary: {general.summary}</p>   
       <h3>Education</h3>
       {education.map((entry) => (
-        <div key={entry.id} className="educationRow">
+        <div key={entry.id} className="education-row">
           <p>Institution name: {entry.institution}</p>
           <p>Qualification: {entry.qualification}</p>
           <p>Date: {entry.date}</p>
@@ -25,7 +25,7 @@ const Preview = (props) => {
       ))}
       <h3>Experience</h3>
       {experience.map((entry) => (
-        <div key={entry.id} className="experienceRow">
+        <div key={entry.id} className="experience-row">
           <p>{entry.organization}</p>
           <p>{entry.dateStart} - {entry.dateEnd}</p>
           <p>Job title / position: {entry.title}</p>

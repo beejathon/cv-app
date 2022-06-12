@@ -1,5 +1,6 @@
 import React from "react";
 import EducationEditForm from "./EducationEditForm";
+import '../styles/Education.css';
 
 const EducationView = props => {
   const { 
@@ -10,17 +11,19 @@ const EducationView = props => {
   } = props;
 
   return (
-    <div className="Education">
+    <div className="education">
       <h3>Education:</h3>
       {education.map((entry) => {
         if (entry.edit === false) {
           return (
-            <div key={entry.id} className="educationRow">
+            <div key={entry.id} className="education-row">
               <p>Institution name: {entry.institution}</p>
               <p>Qualification: {entry.qualification}</p>
               <p>Date: {entry.date}</p>
-              <button onClick={() => editEducation(entry.id)}>Edit</button>
-              <button onClick={() => delEducation(entry.id)}>Delete</button>
+              <div className="button-row">
+                <button onClick={() => editEducation(entry.id)}>Edit</button>
+                <button onClick={() => delEducation(entry.id)}>Delete</button>           
+              </div>
             </div>
           );
         } else {

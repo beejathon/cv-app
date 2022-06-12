@@ -1,43 +1,38 @@
 import React from "react";
-import { Component } from "react";
 import ExperienceEditForm from "./ExperienceEditForm";
+import '../styles/Experience.css';
 
-class ExperienceView extends Component {
-  constructor(props) {
-    super(props);
+const ExperienceView = props => {
+  const {
+    experience,
+    editExperience,
+    delExperience,
+    updateExperience
+  } = props;
 
-    this.updateExperience = this.updateExperience.bind(this)
-  }
-
-  updateExperience(data) {
-    this.props.updateExperience(data);
-  }
-
-  render() {
-    const { experience, editExperience, delExperience } = this.props;
-
-    return (
-      <div className="Experience">
-        <h3>Experience:</h3>
-        {experience.map((entry) => {
-          if (entry.edit === false) {
-            return (
-              <div key={entry.id} className="experienceRow">
-                <p>{entry.organization}</p>
-                <p>{entry.dateStart} - {entry.dateEnd}</p>
-                <p>Job title / position: {entry.title}</p>
-                <p>Summary: {entry.summary}</p>
+  return (
+    <div className="experience">
+      <h3>Experience:</h3>
+      {experience.map((entry) => {
+        if (entry.edit === false) {
+          return (
+            <div key={entry.id} className="experience-row">
+              <p>{entry.organization}</p>
+              <p>{entry.dateStart} - {entry.dateEnd}</p>
+              <p>Job title / position: {entry.title}</p>
+              <p>Summary: {entry.summary}</p>
+              <div className="button-row">
                 <button onClick={() => editExperience(entry.id)}>Edit</button>
                 <button onClick={() => delExperience(entry.id)}>Delete</button>
               </div>
-            );
-          } else {
-            return <ExperienceEditForm key={entry.id} entry={entry} updateExperience={this.updateExperience} />
-          }
-        })}
-      </div>
-    )
-  }
+            </div>
+          );
+        } else {
+          return <ExperienceEditForm key={entry.id} entry={entry} updateExperience={updateExperience} />
+        }
+      })}
+    </div>
+  )
 }
 
 export default ExperienceView;

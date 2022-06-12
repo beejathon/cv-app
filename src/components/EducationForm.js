@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import uniqid from 'uniqid';
 import '../styles/Education.css';
 
-const EducationForm = props => {
+const EducationForm = ({addEducation}) => {
   const [institution, setInstitution] = useState('');
   const [qualification, setQualification] = useState('');
   const [date, setDate] = useState('');
@@ -11,11 +11,11 @@ const EducationForm = props => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.addEducation({institution, qualification, date, id, edit});
+    addEducation({institution, qualification, date, id, edit});
   };
 
   return (
-    <form className="educationForm" onSubmit={handleSubmit}>
+    <form className="education-form" onSubmit={handleSubmit}>
       <label htmlFor="institution">Institution Name: </label>
       <input type="text" name="institution" value={institution} onChange={e => setInstitution(e.target.value)} required />
       <label htmlFor="qualification">Qualification: </label>

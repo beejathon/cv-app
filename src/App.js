@@ -145,42 +145,44 @@ const App = () => {
   if (addEducationOn) {
     addEducationSection = <EducationForm addEducation={addEducation} />
   } else {
-    addEducationSection = <button onClick={activateAddEdu}>+</button>
+    addEducationSection = <button className="addBtn" onClick={activateAddEdu}>+</button>
   }
 
   let addExperienceSection;
   if (addExperienceOn) {
     addExperienceSection = <ExperienceForm addExperience={addExperience} />
   } else {
-    addExperienceSection = <button onClick={activateAddExp}>+</button>
+    addExperienceSection = <button className="addBtn" onClick={activateAddExp}>+</button>
   }
 
   let content = (
     <div className="App">
       <Header />
       <div className="main">
-        {generalSection}
-        <EducationView
-          education={education}
-          editEducation={editEducation} 
-          delEducation={delEducation}
-          updateEducation={updateEducation}
-        />
-        {addEducationSection}
-        <ExperienceView 
-          experience={experience}
-          editExperience={editExperience}
-          delExperience={delExperience}
-          updateExperience={updateExperience}
-        />
-        {addExperienceSection}
-        <Preview 
-          general={general} 
-          education={education} 
-          experience={experience} 
-        />
-      </div>
-      <div className="aside">
+        <div className="forms">
+          {generalSection}
+          <EducationView
+            education={education}
+            editEducation={editEducation} 
+            delEducation={delEducation}
+            updateEducation={updateEducation}
+          />
+          {addEducationSection}
+          <ExperienceView 
+            experience={experience}
+            editExperience={editExperience}
+            delExperience={delExperience}
+            updateExperience={updateExperience}
+          />
+          {addExperienceSection}
+        </div>
+        <div className="aside">
+          <Preview 
+              general={general} 
+              education={education} 
+              experience={experience} 
+            />
+        </div>
       </div>
     </div>
   );

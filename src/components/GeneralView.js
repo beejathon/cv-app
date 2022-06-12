@@ -5,7 +5,7 @@ const GeneralView = (props) => {
   const { general, editGeneral } = props;
 
   return (
-    <div className="General">
+    <div className="general">
       <h3>General Info:</h3>
       <p>Name: {general.firstName} {general.lastName}</p>
       <p>Email: {general.email}</p>
